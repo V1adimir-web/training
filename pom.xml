@@ -86,10 +86,10 @@
             <version>2.2.6.RELEASE</version>
         </dependency>
 
-        <dependency>
+     <!--   <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
-        </dependency>
+        </dependency> -->
 
     </dependencies>
 
