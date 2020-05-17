@@ -18,10 +18,15 @@
     </head>
     <body>
     <#include "navbar.ftlh">    <#-- директива freemarker'a include для подключения файлов -->
-    <div class="container mt-5">
-        <#nested>
+    <div class="d-flex bd-highlight">
+        <div class="p-2 bd-highlight">
+            <#include "leftnavbar.ftlh">
+        </div>
+        <div class="p-2 flex-grow-1 bd-highlight mt-5">
+            <#nested>
+        </div>
     </div>
-
+    <#include "footer.ftlh">
     <!-- Bootstrap: Optional JavaScript -->
     <!-- jQuery first, then Popper.js - для отрисовки всплывающих ToolTip, then Bootstrap JS - jQuery плагины, обеспечивающие функциональность -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

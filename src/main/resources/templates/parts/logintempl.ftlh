@@ -1,3 +1,4 @@
+<#include "security.ftlh">
 <#macro login path isRegisterForm>
     <form action="${path}" method="post">
         <div class="form-group row"> <#-- Bootstrap -->
@@ -27,7 +28,7 @@
         </div>
         <#if isRegisterForm>
             <div class="form-group row"> <#-- Bootstrap -->
-                <label class="col-sm-2 col-form-label">Пароль:</label>
+                <label class="col-sm-2 col-form-label">Пароль еще раз:</label>
                 <div class="col-sm-6"> <#-- ширина 10 колонок -->
                     <input type="password" name="password2" class="form-control ${(password2Error??)?string('is-invalid', '')}"
                            placeholder="Повторите пароль" />
@@ -51,7 +52,7 @@
                     </#if>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6 mb-3">
                 <#-- для капчи -->
                 <div class="g-recaptcha" data-sitekey="6LfMO_UUAAAAAEg3DsNXJLjm60qnUy_Gae5wXrlc"></div>
                 <#if captchaError??>
@@ -73,6 +74,6 @@
 <#macro logout>
     <form action="/logout" method="post">
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        <button class="btn btn-primary" type="submit">Выход</button>
+        <button class="btn btn-outline-light" type="submit"><#if user??>Выход<#else>Войти</#if></button>
     </form>
 </#macro>
