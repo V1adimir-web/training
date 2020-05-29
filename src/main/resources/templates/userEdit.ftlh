@@ -1,7 +1,9 @@
 <#import "parts/common.ftlh" as c>
 
 <@c.page>
-    Редактирование пользователя
+    <div class="mb-4">
+        <h5>Редактирование пользователя</h5>
+    </div>
     <form action="/user" method="post">
         <input type="text" name="username" value="${user.username}">
         <#list roles as role>

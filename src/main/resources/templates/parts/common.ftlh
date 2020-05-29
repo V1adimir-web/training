@@ -1,3 +1,4 @@
+<#include "security.ftlh">
 <#macro page>
     <!DOCTYPE html>
     <html lang="en">
@@ -17,12 +18,18 @@
         <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
     <body>
-    <#include "navbar.ftlh">    <#-- директива freemarker'a include для подключения файлов -->
+    <#if isAdmin>
+        <#include "adminnavbar.ftlh">
+    <#else>
+        <#include "navbar.ftlh">
+    </#if>
     <div class="d-flex bd-highlight">
-        <div class="p-2 bd-highlight">
-            <#include "leftnavbar.ftlh">
-        </div>
-        <div class="p-2 flex-grow-1 bd-highlight mt-5">
+        <#if !isAdmin>
+            <div class="p-2 bd-highlight mt-1">
+                <#include "leftnavbar.ftlh">
+            </div>
+        </#if>
+        <div class="p-2 flex-fill bd-highlight mt-1 mb-5">  <#-- grow-1    text-center -->
             <#nested>
         </div>
     </div>

@@ -19,5 +19,11 @@
         </div>
     </#if>
 
+    <#if registered??>
+        <div class="alert alert-success" role="alert">
+            ${registered}
+        </div>
+    </#if>
+
     <@l.login "/login" false />
 </@c.page>

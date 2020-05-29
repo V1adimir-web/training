@@ -69,8 +69,8 @@ public class RegistrationController {
             model.addAttribute("usernameError", "User exists!");
             return "registration";
         }
-
-        return "redirect:/login";
+        model.addAttribute("registered", "Аккаунт создан. Для завершения регистрации пройдите по ссылке в письме, высланном на Ваш email");
+        return "login"; //"redirect:/login";
     }
     //==================================================================================================================
     @GetMapping("/activate/{code}")
