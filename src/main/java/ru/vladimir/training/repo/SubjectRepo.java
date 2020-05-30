@@ -10,6 +10,10 @@ public interface SubjectRepo extends CrudRepository<Subject, Long> {
 
     List<Subject> findAll();
 
+    List<Subject> findAllBySubjectname(String subjectname);
+
+    List<Subject> findBySubjectnameContainingOrderBySubjectname(String subjectname);
+
     Subject findBySubjectname(String subjectname);
 
     //Subject findById(Long id);

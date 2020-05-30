@@ -9,4 +9,6 @@ public interface TopicRepo extends CrudRepository<Topic, Long> {
     List<Topic> findAll();
 
     Topic findByTitle(String title);
+
+    List<Topic> findByTitleContainingOrderByTitle(String title);
 }

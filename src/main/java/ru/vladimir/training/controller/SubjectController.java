@@ -28,8 +28,12 @@ public class SubjectController {
     //==================================================================================================================
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping
-    public String subjectList(Model model) {
-        model.addAttribute("subjects", subjectService.findAll());
+    public String subjectList(
+            @RequestParam(required = false, defaultValue = "") String filter,
+            Model model
+    ) {
+        model.addAttribute("subjects", subjectService.findSubjects(filter));
+        model.addAttribute("filter", filter);
         return "subjectList";
     }
     //==================================================================================================================

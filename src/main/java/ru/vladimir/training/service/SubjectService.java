@@ -14,7 +14,10 @@ public class SubjectService {
         this.subjectRepo = subjectRepo;
     }
     //==================================================================================================================
-    public List<Subject> findAll() {
+    public List<Subject> findSubjects(String filter) {
+        if (filter != null && !filter.isEmpty()) {
+            return subjectRepo.findBySubjectnameContainingOrderBySubjectname(filter);
+        }
         return subjectRepo.findAll();
     }
     //==================================================================================================================

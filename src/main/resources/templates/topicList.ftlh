@@ -1,15 +1,20 @@
 <#import "parts/common.ftlh" as c>
-<#import "parts/subjectEdit.ftlh" as se>
+<#import "parts/filter.ftlh" as fl>
 
 <@c.page>
-    <div class="mb-4 text-center">
-        <h5 class="mb-3">Список тем по предметам</h5>
-        <a class="btn btn-outline-primary" href="/topic/add" role="button">Создать Тему</a>
+    <div class="text-center">
+        <h5 class="mb-3">Список упражнений по предметам</h5>
+    </div>
+    <div class="d-flex justify-content-end">
+        <div class="mr-2"><@fl.filterlist "Поиск по упражнению" "/topic" /></div>
+    </div>
+    <div class="text-center">
+        <a class="btn btn-outline-primary" href="/topic/add" role="button">Создать упражнение</a>
     </div>
     <table class="table table-hover col-sm-5 mx-auto">
         <thead>
         <tr>
-            <th scope="col">Тема</th>
+            <th scope="col">Упражнение</th>
             <th scope="col">Предмет</th>
             <th scope="col"></th>
             <th scope="col"></th>
@@ -61,7 +66,7 @@
 
         <#else>
             <tr>
-                <td class="align-middle">Пока нет тем</td>
+                <td class="align-middle">Пока нет упражнений</td>
             </tr>
         </#list>
         </tbody>

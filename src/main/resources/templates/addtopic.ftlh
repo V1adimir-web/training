@@ -2,5 +2,5 @@
 <#import "parts/topicEdit.ftlh" as se>
 
 <@c.page>
-    <@se.edit "Создание темы" "Создать" "/topic/add" />
+    <@se.edit "Создание упражнения" "Создать" "/topic/add" />
 </@c.page>

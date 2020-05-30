@@ -18,7 +18,10 @@ public class TopicService {
         this.subjectRepo = subjectRepo;
     }
     //==================================================================================================================
-    public List<Topic> findAll() {
+    public List<Topic> findTopics(String filter) {
+        if (filter != null && !filter.isEmpty()) {
+            return topicRepo.findByTitleContainingOrderByTitle(filter);
+        }
         return topicRepo.findAll();
     }
     //==================================================================================================================
@@ -46,26 +49,11 @@ public class TopicService {
             topic.setSubject(selectedSubject);
         }
     }
-
     //==================================================================================================================
     private boolean isTopicExist(Topic topic) {
         Topic topicFromDb = topicRepo.findByTitle(topic.getTitle().trim());
         return topicFromDb != null;
     }
-
-    /*public boolean updTopic(Topic topic, Topic oldTopic) {
-        if (topic.getTitle().trim().equals(oldTopic.getTitle())) {
-            return true;
-        }
-        Topic topicFromDb = topicRepo.findByTitle(topic.getTitle().trim());
-        if (topicFromDb != null) {
-            return false;
-        } else {
-            topic.setId(oldTopic.getId());
-            topicRepo.save(topic);
-            return true;
-        }
-    }*/
     //==================================================================================================================
     public void removeTopic(Topic topic) {
         if (topicRepo.findById(topic.getId()).isPresent()) {

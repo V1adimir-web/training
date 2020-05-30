@@ -1,9 +1,14 @@
 <#import "parts/common.ftlh" as c>
-<#import "parts/subjectEdit.ftlh" as se>
+<#import "parts/filter.ftlh" as fl>
 
 <@c.page>
-    <div class="mb-4 text-center">
-        <h5 class="mb-3">Список предметов</h5>
+    <div class="text-center">
+        <h5>Список предметов</h5>
+    </div>
+    <div class="d-flex justify-content-end">
+        <div class="mr-2"><@fl.filterlist "Поиск по предмету" "/subject" /></div>
+    </div>
+    <div class="text-center">
         <a class="btn btn-outline-primary" href="/subject/add" role="button">Создать предмет</a>
     </div>
     <table class="table table-hover col-sm-5 mx-auto">

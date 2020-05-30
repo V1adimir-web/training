@@ -4,11 +4,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import ru.vladimir.training.domain.Topic;
-import ru.vladimir.training.repo.TopicRepo;
 import ru.vladimir.training.service.SubjectService;
 import ru.vladimir.training.service.TopicService;
 
@@ -19,7 +17,7 @@ import java.util.Map;
 @PreAuthorize("hasAuthority('ADMIN')")
 @RequestMapping("/topic")
 public class TopicController {
-    private static final String TOPICEXIST = "ДАННАЯ ТЕМА УЖЕ СУЩЕСТВУЕТ";
+    private static final String TOPICEXIST = "ДАННОЕ УПРАЖНЕНИЕ УЖЕ СУЩЕСТВУЕТ";
 
     @Autowired
     SubjectService subjectService;
@@ -28,8 +26,12 @@ public class TopicController {
     TopicService topicService;
     //==================================================================================================================
     @GetMapping
-    public String topicList(Model model) {
-        model.addAttribute("topics", topicService.findAll());
+    public String topicList(
+            @RequestParam(required = false, defaultValue = "") String filter,
+            Model model
+    ) {
+        model.addAttribute("topics", topicService.findTopics(filter));
+        model.addAttribute("filter", filter);
         return "topicList";
     }
     //==================================================================================================================
@@ -40,7 +42,7 @@ public class TopicController {
             ) {
         model.addAttribute("title", topic.getTitle());
         model.addAttribute("topicid", topic.getId());
-        model.addAttribute("subjects", subjectService.findAll());
+        model.addAttribute("subjects", subjectService.findSubjects(null));
         model.addAttribute("subjectname", topic.getSubject().getSubjectname());
         return "updatetopic";
     }
@@ -49,7 +51,7 @@ public class TopicController {
     public String topicAddForm(
             Model model
     ) {
-        model.addAttribute("subjects", subjectService.findAll());
+        model.addAttribute("subjects", subjectService.findSubjects(null));
         return "addtopic";
     }
     //==================================================================================================================
@@ -62,7 +64,7 @@ public class TopicController {
     ) {
         model.addAttribute("title", topic.getTitle());
         model.addAttribute("subjectname", subjectname);
-        model.addAttribute("subjects", subjectService.findAll());
+        model.addAttribute("subjects", subjectService.findSubjects(null));
         if (bindingResult.hasErrors()) {
             Map<String, String> errorsMap = ControllerUtils.getErrors(bindingResult);
             model.mergeAttributes(errorsMap);
@@ -85,7 +87,7 @@ public class TopicController {
     ) {
         model.addAttribute("title", topic.getTitle());
         model.addAttribute("topicid", oldTopic.getId());
-        model.addAttribute("subjects", subjectService.findAll());
+        model.addAttribute("subjects", subjectService.findSubjects(null));
         model.addAttribute("subjectname", subjectname);
         if (bindingResult.hasErrors()) {
             Map<String, String> errorsMap = ControllerUtils.getErrors(bindingResult);

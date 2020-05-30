@@ -64,10 +64,10 @@
 
         </#if>
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
+        <button class="btn btn-primary" type="submit"><#if isRegisterForm>Создать<#else>Войти</#if></button>
         <#if !isRegisterForm>
             <a href="/registration">Регистрация</a>
         </#if>
-        <button class="btn btn-primary" type="submit"><#if isRegisterForm>Создать<#else>Войти</#if></button>
     </form>
 </#macro>
 

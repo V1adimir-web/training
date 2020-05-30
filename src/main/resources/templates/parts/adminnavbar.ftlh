@@ -15,7 +15,10 @@
                 <a class="nav-link text-white" href="/subject">Предметы</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="/topic">Темы</a>
+                <a class="nav-link text-white" href="/topic">Упражнения</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="/task">Задачи</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link text-white" href="/user/profile">Мой профиль</a>
