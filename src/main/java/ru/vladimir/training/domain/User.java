@@ -1,6 +1,7 @@
 package ru.vladimir.training.domain;
 
 
+import org.hibernate.validator.constraints.Length;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -8,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Set;
 
 @Entity
@@ -32,6 +34,14 @@ public class User implements UserDetails {
     private String activationCode;
 
     private String profileImg;
+
+    @Length(max = 20, message = "СЛИШКОМ ДЛИННОЕ ИМЯ (max 20 символов)")
+    private String firstname;
+
+    @Length(max = 25, message = "СЛИШКОМ ДЛИННАЯ ФАМИЛИЯ (max 25 символов)")
+    private String lastname;
+
+    private Date lastDateChange;
     //==================================================================================================================
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER) // FetchType.EAGER - жадный способ подгрузки данных из enum'a
     @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
@@ -129,5 +139,29 @@ public class User implements UserDetails {
 
     public void setProfileImg(String profileImg) {
         this.profileImg = profileImg;
+    }
+    //==================================================================================================================
+    public String getFirstname() {
+        return firstname;
+    }
+
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
+    }
+    //==================================================================================================================
+    public String getLastname() {
+        return lastname;
+    }
+
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
+    //==================================================================================================================
+    public Date getLastDateChange() {
+        return lastDateChange;
+    }
+
+    public void setLastDateChange(Date lastDateChange) {
+        this.lastDateChange = lastDateChange;
     }
 }

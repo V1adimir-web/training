@@ -3,7 +3,7 @@
         <h5>${formTitle}</h5>
     </div>
     <form class="col-sm-6 mx-auto" action="${path}" method="post">
-        <div class="form-group row">
+        <div class="form-group row d-flex justify-content-center">
             <label class="col-sm-4 col-form-label" for="topicSelect">Выберете упражнение для задачи:</label>
             <div class="col-sm-7">
                 <select class="form-control" id="topicSelect" name="topictitle">
@@ -20,7 +20,7 @@
                 </select>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row d-flex justify-content-center">
             <label class="col-sm-4 col-form-label">Условие задачи:</label>
             <div class="col-sm-7">
                 <input type="text" name="content" value="<#if content??>${content}</#if>"
@@ -32,7 +32,7 @@
                 </#if>
             </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row d-flex justify-content-center">
             <label class="col-sm-4 col-form-label">Правильный ответ:</label>
             <div class="col-sm-7">
                 <input type="text" name="rightanswer" value="<#if rightanswer??>${rightanswer}</#if>"
@@ -46,6 +46,8 @@
         </div>
         <input type="hidden" name="taskId" value="<#if taskid??>${taskid!}</#if>" />
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
-        <button class="btn btn-outline-primary" type="submit">${buttonTitle}</button>
+        <div class="d-flex justify-content-center mt-3">
+            <button class="btn btn-outline-primary" type="submit">${buttonTitle}</button>
+        </div>
     </form>
 </#macro>

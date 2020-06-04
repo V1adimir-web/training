@@ -2,7 +2,7 @@
 <#import "parts/logintempl.ftlh" as l>
 
 <@c.page>
-    <div class="mb-4">
+    <div class="mb-4 text-center">
         <h5>Регистрация нового пользователя</h5>
     </div>
     <div>

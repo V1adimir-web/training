@@ -1,11 +1,11 @@
 <#macro edit formTitle buttonTitle path>
-    <div class="mb-4">
+    <div class="mb-4 text-center">
         <h5>${formTitle}</h5>
     </div>
-    <form action="${path}" method="post">  <#-- action="/subject/update" -->
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Предмет:</label>
-            <div class="col-sm-6">
+    <form class="col-sm-6 mx-auto" action="${path}" method="post">  <#-- action="/subject/update" -->
+        <div class="d-flex justify-content-center">
+            <label class="col-sm-2 col-form-label ml-5">Предмет:</label>
+            <div class="col-sm-7">
                 <input type="text" name="subjectname" value="<#if subjectname??>${subjectname}</#if>"
                        class="form-control ${(subjectnameError??)?string('is-invalid', '')}" placeholder="Введите предмет" />
                 <#if subjectnameError??>
@@ -17,6 +17,8 @@
         </div>
         <input type="hidden" name="subjectId" value="<#if subjectid??>${subjectid!}</#if>" />
         <input type="hidden" name="_csrf" value="${_csrf.token}" />
-        <button class="btn btn-primary" type="submit">${buttonTitle}</button>
+        <div class="d-flex justify-content-center mt-3">
+            <button class="btn btn-primary" type="submit">${buttonTitle}</button>
+        </div>
     </form>
 </#macro>

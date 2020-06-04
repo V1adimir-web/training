@@ -1,8 +1,8 @@
 <#include "security.ftlh">
 <#macro login path isRegisterForm>
-    <form action="${path}" method="post">
+    <form action="${path}" method="post" class="col-sm-5 mx-auto">
         <div class="form-group row"> <#-- Bootstrap -->
-            <label class="col-sm-2 col-form-label">Логин:</label> <#-- class означает,что ширина текущего эл-та - 2 колонки и данный эл-т явл. эл-том поля ввода формы -->
+            <label class="col-sm-3 col-form-label">Логин:</label> <#-- class означает,что ширина текущего эл-та - 2 колонки и данный эл-т явл. эл-том поля ввода формы -->
             <div class="col-sm-6">
                 <input type="text" name="username" value="<#if user??>${user.username}</#if>"
                        class="form-control ${(usernameError??)?string('is-invalid', '')}"
@@ -15,7 +15,7 @@
             </div>
         </div>
         <div class="form-group row"> <#-- Bootstrap -->
-            <label class="col-sm-2 col-form-label">Пароль:</label>
+            <label class="col-sm-3 col-form-label">Пароль:</label>
             <div class="col-sm-6"> <#-- ширина 10 колонок -->
                 <input type="password" name="password" class="form-control ${(passwordError??)?string('is-invalid', '')}"
                        placeholder="Введите пароль" />
@@ -28,7 +28,7 @@
         </div>
         <#if isRegisterForm>
             <div class="form-group row"> <#-- Bootstrap -->
-                <label class="col-sm-2 col-form-label">Пароль еще раз:</label>
+                <label class="col-sm-3 col-form-label">Пароль еще раз:</label>
                 <div class="col-sm-6"> <#-- ширина 10 колонок -->
                     <input type="password" name="password2" class="form-control ${(password2Error??)?string('is-invalid', '')}"
                            placeholder="Повторите пароль" />
@@ -40,7 +40,7 @@
                 </div>
             </div>
             <div class="form-group row"> <#-- Bootstrap -->
-                <label class="col-sm-2 col-form-label">Почтовый ящик:</label>
+                <label class="col-sm-3 col-form-label">Почтовый ящик:</label>
                 <div class="col-sm-6"> <#-- ширина 10 колонок -->
                     <input type="email" name="email" value="<#if user??>${user.email}</#if>"
                            class="form-control ${(emailError??)?string('is-invalid', '')}"
@@ -64,7 +64,7 @@
 
         </#if>
         <input type="hidden" name="_csrf" value="${_csrf.token}"/>
-        <button class="btn btn-primary" type="submit"><#if isRegisterForm>Создать<#else>Войти</#if></button>
+        <button class="btn btn-primary mr-3" type="submit"><#if isRegisterForm>Создать<#else>Войти</#if></button>
         <#if !isRegisterForm>
             <a href="/registration">Регистрация</a>
         </#if>

@@ -3,7 +3,7 @@
 
 <@c.page>
     <div class="text-center">
-        <h5 class="mb-3">Список упражнений по предметам</h5>
+        <h5>Список упражнений по предметам</h5>
     </div>
     <div class="d-flex justify-content-end">
         <div class="mr-2"><@fl.filterlist "Поиск по упражнению" "/topic" /></div>
